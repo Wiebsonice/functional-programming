@@ -24,7 +24,7 @@ Dit is ook makkelijk om over te zetten naar een analoge wereld.
 ## Concept 3: Horse race!
 Een interactieve horse race die laat zien hoeveel beelden van een bepaalde beeldhouwtechniek er elk jaar bijkwamen. Om zo de technieken te kunnen zien per jaar en hoe deze in populairiteit toe- of afnamen. De bar chart begint op een set year, en loopt op tot het nieuwste object in de database.
 
-![timeline schets](https://github.com/Wiebsonice/functional-programming/blob/master/wiki-assets/Timeline-schets.png)
+![timeline schets](https://github.com/Wiebsonice/functional-programming/blob/master/wiki-assets/timeline-schets.png)
   
 En Racen maar!
 
