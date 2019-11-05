@@ -6,7 +6,28 @@ Dit project is een concept uitwerking van een webapplicatie gemaakt in VueJs in 
 * [Getting started](https://github.com/Wiebsonice/frontend-applications/blob/master/README.md#getting-started)
 * [Wiki](https://github.com/Wiebsonice/frontend-applications/wiki)
 
-# Het concept
+# De concepten
+Ik ben gaan nadenken over de verschillende concepten die ik kon bedenken voor datavisualisaties. Ik heb 3 concepten bedacht waarvan 1 redelijk gelijk is met de eerste opdracht. Alle concepten hebben een andere soort chart als concept.
+
+## Concept 1: Spatial
+Voor het eerste concept wilde ik in landen laten zien of welke goden het vaakst afgebeeld worden door de beeldhouders, of welke beeldhoud technieken het meest gebruikt worden in de landen waar beelden vandaan komen.
+![]()
+
+De gebruiker kan ook op de landen klikken om te zien hoeveel de technieken gebruikt worden.
+  
+## Concept 2: De Scale
+Na het hoorcollege van maandag vertelde de spreker dat er een paar formaten waren die hij wilde gebruiken in de tentoonstelling van over het tropenmuseum. Hij wilde graag een scale, ik had reeds al een scale gemaakt, als vorrige opdracht en zat er over te denken die overnieuw te doen, en dan alle beelden te pakken. Deze beelden zijn dan te centreren weer onder de hoogte die ingevoerd word door de gebruiker.
+![]()
+  
+Dit is ook makkelijk om over te zetten naar een analoge wereld.
+  
+## Concept 3: Horse race!
+Een interactieve horse race die laat zien hoeveel beelden van een bepaalde beeldhouwtechniek er elk jaar bijkwamen. Om zo de technieken te kunnen zien per jaar en hoe deze in populairiteit toe- of afnamen. De bar chart begint op een set year, en loopt op tot het nieuwste object in de database.
+
+![]()
+  
+En Racen maar!
+
 
 
 ## Getting Started
