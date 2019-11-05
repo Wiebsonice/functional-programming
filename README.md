@@ -11,20 +11,20 @@ Ik ben gaan nadenken over de verschillende concepten die ik kon bedenken voor da
 
 ## Concept 1: Spatial
 Voor het eerste concept wilde ik in landen laten zien of welke goden het vaakst afgebeeld worden door de beeldhouders, of welke beeldhoud technieken het meest gebruikt worden in de landen waar beelden vandaan komen.
-![]()
+![Worldmap](https://github.com/Wiebsonice/functional-programming/blob/master/wiki-assets/world-sketch.png)
 
 De gebruiker kan ook op de landen klikken om te zien hoeveel de technieken gebruikt worden.
   
 ## Concept 2: De Scale
 Na het hoorcollege van maandag vertelde de spreker dat er een paar formaten waren die hij wilde gebruiken in de tentoonstelling van over het tropenmuseum. Hij wilde graag een scale, ik had reeds al een scale gemaakt, als vorrige opdracht en zat er over te denken die overnieuw te doen, en dan alle beelden te pakken. Deze beelden zijn dan te centreren weer onder de hoogte die ingevoerd word door de gebruiker.
-![]()
+![the scale](https://github.com/Wiebsonice/functional-programming/blob/master/wiki-assets/boeddha-scale.png)
   
 Dit is ook makkelijk om over te zetten naar een analoge wereld.
   
 ## Concept 3: Horse race!
 Een interactieve horse race die laat zien hoeveel beelden van een bepaalde beeldhouwtechniek er elk jaar bijkwamen. Om zo de technieken te kunnen zien per jaar en hoe deze in populairiteit toe- of afnamen. De bar chart begint op een set year, en loopt op tot het nieuwste object in de database.
 
-![]()
+![timeline schets](https://github.com/Wiebsonice/functional-programming/blob/master/wiki-assets/Timeline-schets.png)
   
 En Racen maar!
 
