@@ -16,7 +16,6 @@ export default {
             browser: true
         }),
         json(),
-        commonjs(),
-        terser()
+        commonjs()
     ]
 }
