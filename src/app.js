@@ -7,8 +7,6 @@ function main() {
 	convertYear(rawData);
 }
 
-console.log(splitStringCalcAverage(results.results.bindings[10].date.value))
-
 function splitStringCalcAverage(data) {
     var splittedString = data.split("-")
     return average(splittedString[0], splittedString[1])
@@ -19,20 +17,21 @@ function average(a, b) {
     return Math.round((a*1 + b*1) /2);
 }
 
-function clearDateString(data) {
-    data.value = data.value.toUpperCase();
 
+function clearDateString(data) {
+    data.value = data.value.toLowerCase();
 
     if(data.value && typeof data.value === "string") {
         // Remove Spaces
         data.value = data.value.replace(/\s+/g, '');
 
-        if (data.value.includes("BC")) {
+        // BC / AD checker
+        if (data.value.includes("bc")) {
             data.bcValue = true
-            data.value = data.value.replace('BC', "");
-            if (data.value.includes("AD")) {
+            data.value = data.value.replace('bc', "");
+            if (data.value.includes("ad")) {
                 data.adValue = true
-                data.value = data.value.replace('AD', "");
+                data.value = data.value.replace('ad', "");
             } else {
                 data.adValue = false
             }
@@ -40,83 +39,32 @@ function clearDateString(data) {
             data.bcValue = false
         }
 
-        if (data.value.includes("EEUW")) {
+        // eeuw checker
+        if (data.value.includes("eeuw")) {
             data.eeuw = true
-            data.value = data.value.replace('EEUW', "");
-
-            if (data.value.includes("VROEG")) {
-                data.value = data.value.replace('VROEG', "");
-
-                if (data.value.includes("E")) {
-                    data.value = data.value.replace(/E/g, "");
-                }
-            } else if (data.value.includes("MIDDEN")) {
-                data.value = data.value.replace('MIDDEN', "");
-                if (data.value.includes("E")) {
-                    data.value = data.value.replace(/E/g, "");
-                }
-            } else if (data.value.includes("E")) {
-                data.value = data.value.replace(/E/g, "");
-            }
-
-        } else if (data.value.includes("TH")) {
-            data.value = data.value.replace(/\T.*/,'');
+            data.value = data.value.replace('eeuw', "");
+        } else if (data.value.includes("th")) {
+            data.value = data.value.replace(/\t.*/,'');
             data.eeuw = true
         } else {
             data.eeuw = false
         }
 
-        if (data.value.includes("CA")) {
-            data.value = data.value.replace('CA.', "");
-        }
-        if (data.value.includes("NA")) {
-            data.value = data.value.replace('NA', "");
-        }
-        if (data.value.includes("C.")) {
-            data.value = data.value.replace('C.', "");
-        }
-        if (data.value.includes("D")) {
-            data.value = data.value.replace('D', "");
-        }
-        if (data.value.includes("CIRCA")) {
-            data.value = data.value.replace('CIRCA', "");
-        }
-        if (data.value.includes("(VOOR")) {
-            data.value = data.value.replace('(VOOR', "");
-        }
-        if (data.value.includes("VOOR")) {
-            data.value = data.value.replace(/VOOR/g, "");
+        // odd one
+        if (data.value.includes("2hlft19")) {
+            data.value = "0"
         }
 
-        if (data.value.includes("ST")) {
-            data.value = data.value.replace('ST', "");
-        }
+        // replace loop met een array en RegExp
+        var replaceArr = ["a","b","c","d","e","f","g","h","i","j","k","l","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z", /\(/, /\)/, /\./, , /\?/]
+        replaceArr.forEach(el => data.value = data.value.replace(new RegExp(el, "g"), ""))
 
-
-        if (data.value.includes("(")) {
-            data.value = data.value.replace(/ *\([^)]*\) */g, '');
-        } else if (data.value.includes(")")) {
-            data.value = data.value.replace(")", '');
-        }
-
-
-        if (data.value.includes("-")) {
-            data.value = data.value.replace('CIRCA', "");
-        }
+        // Replace / met -
         if (data.value.includes("/")) {
             data.value = data.value.replace('/', "-");
         }
 
-        if (data.value.includes("?")) {
-            data.value = data.value.replace('?', "");
-        }
-        if (data.value.includes("20-20THCNTURY")){
-            data.value = data.value.replace('20-20THCNTURY', "20");
-            data.eeuw = "0"
-        }
-        if (data.value.includes("SCHAAL") || data.value.includes("2HLFT19")) {
-            data.value = "0"
-        }
+        console.log(data.value)
     }
 
     return data
@@ -124,29 +72,15 @@ function clearDateString(data) {
 
 
 function convertYear(item) {
-    // item = clearDateString(item)
-    // var type = checkType(item)
-    //
-    // if (type === "simple"){
-    //     return averageSimpleYear(item)
-    // }
 	item.map(el => {
-
         var clearedStrings = clearDateString(el.date)
-
-        // console.log(clearedStrings)
 
         if (clearedStrings.value.includes("-")) {
             if (clearedStrings.eeuw == false){
                 clearedStrings.value = splitStringCalcAverage(clearedStrings.value);
-                console.log(clearedStrings.value)
+                // console.log(clearedStrings.value)
             }
         }
-
-
-
-        // Heb ik average nodig, check ik hier
-
 	})
 
 	let newArr = item;
@@ -154,19 +88,3 @@ function convertYear(item) {
 }
 
 main();
-
-// fetchedData.forEach(function(i){
-//     i.img.value = i.img.value.replace("http", "https")
-//     i.extent.value = i.extent.value.replace(",", ".")
-//     if (i.extent.value.startsWith("H") || i.extent.value.startsWith("h")){
-//         var splittedString = i.extent.value.split(" ");
-//         if (splittedString[1].includes("x") || splittedString[1].includes("X")){
-//             i.extent.value = splittedString[1].split("x")[0]
-//         } else {
-//             i.extent.value = splittedString[1]
-//         }
-//     } else if (i.extent.value.includes("×")) {
-//         var splittedString = i.extent.value.split(" ");
-//         i.extent.value = splittedString[0]
-//     }
-// })
