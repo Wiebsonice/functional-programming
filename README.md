@@ -4,7 +4,7 @@ Dit project is een concept uitwerking van een webapplicatie gemaakt in VueJs in 
 
 * [Het Concept](https://github.com/Wiebsonice/frontend-applications/blob/master/README.md#het-concept)
 * [Getting started](https://github.com/Wiebsonice/frontend-applications/blob/master/README.md#getting-started)
-* [Wiki](https://github.com/Wiebsonice/frontend-applications/wiki)
+* [Wiki](https://github.com/Wiebsonice/functional-programming/wiki)
 
 # De concepten
 Ik ben gaan nadenken over de verschillende concepten die ik kon bedenken voor datavisualisaties. Ik heb 3 concepten bedacht waarvan 1 redelijk gelijk is met de eerste opdracht. Alle concepten hebben een andere soort chart als concept.
