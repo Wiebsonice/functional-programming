@@ -5,7 +5,7 @@ const rawData = results.results.bindings
 
 // main function
 function main() {
-	convertYear(rawData);
+	convertData(rawData);
 }
 
 function splitStringCalcAverage(data) {
@@ -70,22 +70,35 @@ function clearDateString(data) {
 }
 
 
-function convertYear(item) {
-	item.map(el => {
-        var clearedStrings = clearDateString(el.date)
+function clearMedium(data) {
+    data.value = data.value.toLowerCase();
+    var replaceArr = ["ijzer","hout","brons","aarde", "klei", "koper", "goud", "papier"]
+    replaceArr.forEach(el => {
+        if (data.value.includes(el)) {
+            data.value = el
+        }
+    })
+    return data
+}
 
-        if (clearedStrings.eeuw == false){
-            if (clearedStrings.value.includes("-")) {
-                clearedStrings.value = splitStringCalcAverage(clearedStrings.value);
+function convertData(item) {
+	item.map(el => {
+        var clearedStringsDate = clearDateString(el.date)
+        var clearedStringsMedium = clearMedium(el.mediumLabel)
+        console.log(el);
+
+        if (clearedStringsDate.eeuw == false){
+            if (clearedStringsDate.value.includes("-")) {
+                clearedStringsDate.value = splitStringCalcAverage(clearedStringsDate.value);
             }
-        } else if (clearedStrings.eeuw == true) {
-            if (!clearedStrings.value.includes("-")) {
-                if (clearedStrings.value.length >= 3) {
-                    clearedStrings.value = clearedStrings.value.split("2")[1]
+        } else if (clearedStringsDate.eeuw == true) {
+            if (!clearedStringsDate.value.includes("-")) {
+                if (clearedStringsDate.value.length >= 3) {
+                    clearedStringsDate.value = clearedStringsDate.value.split("2")[1]
                 }
             }
         }
-        console.log(clearedStrings.value)
+        // console.log(clearedStrings.value)
 	})
 
 	let newArr = item;
