@@ -3,6 +3,7 @@ import results from './data/results.json'
 
 const rawData = results.results.bindings
 
+// main function
 function main() {
 	convertYear(rawData);
 }
@@ -50,8 +51,8 @@ function clearDateString(data) {
             data.eeuw = false
         }
 
-        // odd one
-        if (data.value.includes("2hlft19")) {
+        // odd ones
+        if (data.value.includes("2hlft19") || data.value.includes("20evoor1971")) {
             data.value = "0"
         }
 
@@ -63,8 +64,6 @@ function clearDateString(data) {
         if (data.value.includes("/")) {
             data.value = data.value.replace('/', "-");
         }
-
-        console.log(data.value)
     }
 
     return data
@@ -75,12 +74,18 @@ function convertYear(item) {
 	item.map(el => {
         var clearedStrings = clearDateString(el.date)
 
-        if (clearedStrings.value.includes("-")) {
-            if (clearedStrings.eeuw == false){
+        if (clearedStrings.eeuw == false){
+            if (clearedStrings.value.includes("-")) {
                 clearedStrings.value = splitStringCalcAverage(clearedStrings.value);
-                // console.log(clearedStrings.value)
+            }
+        } else if (clearedStrings.eeuw == true) {
+            if (!clearedStrings.value.includes("-")) {
+                if (clearedStrings.value.length >= 3) {
+                    clearedStrings.value = clearedStrings.value.split("2")[1]
+                }
             }
         }
+        console.log(clearedStrings.value)
 	})
 
 	let newArr = item;
