@@ -85,7 +85,6 @@ function convertData(item) {
 	item.map(el => {
         var clearedStringsDate = clearDateString(el.date)
         var clearedStringsMedium = clearMedium(el.mediumLabel)
-        console.log(el);
 
         if (clearedStringsDate.eeuw == false){
             if (clearedStringsDate.value.includes("-")) {
