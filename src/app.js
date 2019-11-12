@@ -18,6 +18,22 @@ function average(a, b) {
     return Math.round((a*1 + b*1) /2);
 }
 
+function centuryAverageSplitCalc(data) {
+    var splittedString = data.split("-")
+    return average(splittedString[0], splittedString[1]) - 1 + "50"
+}
+
+function centuryToYear(data) {
+    if (data == "0") {
+        data = 0
+    } else {
+        if (data.length == 2 || data.length == 1) {
+            data = data - 1 + "50"
+        }
+    }
+    return data
+}
+
 
 function clearDateString(data) {
     data.value = data.value.toLowerCase();
@@ -94,10 +110,14 @@ function convertData(item) {
             if (!clearedStringsDate.value.includes("-")) {
                 if (clearedStringsDate.value.length >= 3) {
                     clearedStringsDate.value = clearedStringsDate.value.split("2")[1]
+                    clearedStringsDate.value = centuryToYear(clearedStringsDate.value)
                 }
+                clearedStringsDate.value = centuryToYear(clearedStringsDate.value)
+            } else {
+                clearedStringsDate.value = centuryAverageSplitCalc(clearedStringsDate.value)
             }
         }
-        // console.log(clearedStrings.value)
+        console.log(clearedStringsDate.value)
 	})
 
 	let newArr = item;
