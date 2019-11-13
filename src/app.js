@@ -5,7 +5,9 @@ const rawData = results.results.bindings
 
 // main function
 function main() {
-	convertData(rawData);
+	let cleanedData = convertData(rawData);
+    let barChartArrData = createBarChartArr(cleanedData);
+    console.log(barChartArrData)
 }
 
 function splitStringCalcAverage(data) {
@@ -117,11 +119,32 @@ function convertData(item) {
                 clearedStringsDate.value = centuryAverageSplitCalc(clearedStringsDate.value)
             }
         }
-        console.log(clearedStringsDate.value)
 	})
 
 	let newArr = item;
+    // console.log(newArr)
 	return newArr;
+
+}
+
+
+function createBarChartArr(data) {
+    let i = 0
+    let objectsArr = []
+
+    data.forEach(el => {
+        i ++
+        objectsArr.push({
+            id: i,
+            year: el.date.value.toString(),
+            material: el.mediumLabel.value,
+            cords: [{
+                lat: el.lat.value,
+                long: el.long.value
+            }]
+        });
+    })
+    return objectsArr
 }
 
 main();
