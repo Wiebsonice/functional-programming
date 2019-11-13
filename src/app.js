@@ -7,7 +7,8 @@ const rawData = results.results.bindings
 function main() {
 	let cleanedData = convertData(rawData);
     let barChartArrData = createBarChartArr(cleanedData);
-    makeD3Chart(barChartArrData);
+    let staticBarChartArrData = createStaticBarChartArr(cleanedData);
+    makeD3Chart(staticBarChartArrData);
     // console.log(barChartArrData)
 }
 
@@ -147,15 +148,48 @@ function createBarChartArr(data) {
     })
     return objectsArr
 }
+
+
+function createStaticBarChartArr(data) {
+    let i = 0
+    let hashArr = {}
+    let materialsArr = ["ijzer","hout","brons","aarde", "klei", "koper", "goud", "papier"]
+    let hout = 0
+
+    data.forEach(el => {
+        // check of de value al in de hashArr zit
+        if(el.mediumLabel.value in hashArr ){
+            // als de value in de hashArr zit, dan +1
+            hashArr[el.mediumLabel.value] = hashArr[el.mediumLabel.value] + 1;
+        }else{
+            hashArr[el.mediumLabel.value] = 1;
+        }
+    })
+
+    // vorm nieuw object van de hashArr
+    let newArr = []
+    Object.keys(hashArr).forEach(material => {
+        newArr.push({
+            material,
+            count: hashArr[material]
+        })
+    })
+
+    return newArr
+}
+
 main();
 
 function makeD3Chart(cleanArr) {
     // Example from https://bl.ocks.org/caravinden/eb0e5a2b38c8815919290fa838c6b63b
-    var data = [{"salesperson":"Bob","sales":33},{"salesperson":"Robin","sales":12},{"salesperson":"Anne","sales":41},{"salesperson":"Mark","sales":16},{"salesperson":"Joe","sales":59},{"salesperson":"Eve","sales":38},{"salesperson":"Karen","sales":21},{"salesperson":"Kirsty","sales":25},{"salesperson":"Chris","sales":30},{"salesperson":"Lisa","sales":47},{"salesperson":"Tom","sales":5},{"salesperson":"Stacy","sales":20},{"salesperson":"Charles","sales":13},{"salesperson":"Mary","sales":29}];
+    // var data = [{"salesperson":"Bob","sales":33},{"salesperson":"Robin","sales":12},{"salesperson":"Anne","sales":41},{"salesperson":"Mark","sales":16},{"salesperson":"Joe","sales":59},{"salesperson":"Eve","sales":38},{"salesperson":"Karen","sales":21},{"salesperson":"Kirsty","sales":25},{"salesperson":"Chris","sales":30},{"salesperson":"Lisa","sales":47},{"salesperson":"Tom","sales":5},{"salesperson":"Stacy","sales":20},{"salesperson":"Charles","sales":13},{"salesperson":"Mary","sales":29}];
 
     // own Data
-    var cleanedArr = cleanArr;
-    console.log(cleanedArr)
+    var data = cleanArr;
+    data.sort(function(a, b) {
+        return d3.ascending(a.count, b.count)
+    })
+    console.log(data)
 
 
     // set the dimensions and margins of the graph
@@ -183,22 +217,22 @@ function makeD3Chart(cleanArr) {
 
       // format the data
       data.forEach(function(d) {
-        d.sales = +d.sales;
+        d.count = +d.count;
       });
 
       // Scale the range of the data in the domains
-      x.domain([0, d3.max(data, function(d){ return d.sales; })])
-      y.domain(data.map(function(d) { return d.salesperson; }));
-      //y.domain([0, d3.max(data, function(d) { return d.sales; })]);
+      x.domain([0, d3.max(data, function(d){ return d.count; })])
+      y.domain(data.map(function(d) { return d.material; }));
+      //y.domain([0, d3.max(data, function(d) { return d.count; })]);
 
       // append the rectangles for the bar chart
       svg.selectAll(".bar")
           .data(data)
         .enter().append("rect")
           .attr("class", "bar")
-          //.attr("x", function(d) { return x(d.sales); })
-          .attr("width", function(d) {return x(d.sales); } )
-          .attr("y", function(d) { return y(d.salesperson); })
+          //.attr("x", function(d) { return x(d.count); })
+          .attr("width", function(d) {return x(d.count); } )
+          .attr("y", function(d) { return y(d.material); })
           .attr("height", y.bandwidth());
 
       // add the x Axis
