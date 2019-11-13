@@ -153,7 +153,6 @@ function createBarChartArr(data) {
 function createStaticBarChartArr(data) {
     let i = 0
     let hashArr = {}
-    let materialsArr = ["ijzer","hout","brons","aarde", "klei", "koper", "goud", "papier"]
     let hout = 0
 
     data.forEach(el => {
@@ -193,7 +192,7 @@ function makeD3Chart(cleanArr) {
 
 
     // set the dimensions and margins of the graph
-    var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    var margin = {top: 20, right: 20, bottom: 30, left: 60},
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
 
@@ -203,7 +202,11 @@ function makeD3Chart(cleanArr) {
               .padding(0.1);
 
     var x = d3.scaleLinear()
-              .range([0, width]);
+              .range([0, width])
+              .nice();
+
+    var myColor = d3.scaleOrdinal().domain(data)
+                    .range(["#f0c989", "#f0c989", "#5d5b5b", "#6e3d34", "#b08d57", "#b29700", "#9b7653", "#caa472"])
 
     // append the svg object to the body of the page
     // append a 'group' element to 'svg'
@@ -211,7 +214,7 @@ function makeD3Chart(cleanArr) {
     var svg = d3.select("body").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
-      .append("g")
+        .append("g")
         .attr("transform",
               "translate(" + margin.left + "," + margin.top + ")");
 
@@ -228,11 +231,11 @@ function makeD3Chart(cleanArr) {
       // append the rectangles for the bar chart
       svg.selectAll(".bar")
           .data(data)
-        .enter().append("rect")
+          .enter().append("rect")
           .attr("class", "bar")
-          //.attr("x", function(d) { return x(d.count); })
           .attr("width", function(d) {return x(d.count); } )
           .attr("y", function(d) { return y(d.material); })
+          .attr("fill", function(d){return myColor(d.material) })
           .attr("height", y.bandwidth());
 
       // add the x Axis
@@ -243,5 +246,4 @@ function makeD3Chart(cleanArr) {
       // add the y Axis
       svg.append("g")
           .call(d3.axisLeft(y));
-
 }
