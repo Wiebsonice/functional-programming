@@ -2,12 +2,12 @@
 
 Dit project is een concept uitwerking van een webapplicatie gemaakt in VueJs in opdracht voor het Tropenmuseum van uit het HvA.
 
-* [Het Concept](https://github.com/Wiebsonice/frontend-applications/blob/master/README.md#het-concept)
-* [Getting started](https://github.com/Wiebsonice/frontend-applications/blob/master/README.md#getting-started)
+* [Het Concept](https://github.com/Wiebsonice/functional-programming/blob/master/README.md#het-concept)
+* [Getting started](https://github.com/Wiebsonice/functional-programming/blob/master/README.md#getting-started)
 * [Wiki](https://github.com/Wiebsonice/functional-programming/wiki)
 
 # De concepten
-Ik ben gaan nadenken over de verschillende concepten die ik kon bedenken voor datavisualisaties. Ik heb 3 concepten bedacht waarvan 1 redelijk gelijk is met de eerste opdracht. Alle concepten hebben een andere soort chart als concept.
+Ik ben gaan nadenken over de verschillende concepten die ik kon bedenken voor datavisualisaties. Ik heb 3 concepten bedacht waarvan 1 redelijk gelijk is met de eerste opdracht. Alle concepten hebben een andere soort chart als concept. Uiteindelijk heb ik gekozen om **concept 3** verder uit te werken. Omdat dit een goede chart is om te animeren en een leerzamere chart is vergelelen met de andere concepten.
 
 ## Concept 1: Spatial
 Voor het eerste concept wilde ik in landen laten zien of welke goden het vaakst afgebeeld worden door de beeldhouders, of welke beeldhoud technieken het meest gebruikt worden in de landen waar beelden vandaan komen.
@@ -152,6 +152,10 @@ Een aantal waarden die ik binnen krijg heb ik clientside opgelost. Zo heb ik de 
   
 ## Acknowledgements
 * Opzetten van rollup [Kris Kuiper]()
+
+### bronnen
+* Horizontal bar chart [Blocks example](https://bl.ocks.org/caravinden/eb0e5a2b38c8815919290fa838c6b63b)
+* Sparql Querry [Ivo Zandhuis](#)
 
 ## License
 
