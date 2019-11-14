@@ -8,6 +8,8 @@ Body {
 }
 h1, h2 {
     color: #373737;
+    width: 100%;
+    text-align: center;
 }
 h1 {
     align-self: flex-start;
