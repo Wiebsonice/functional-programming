@@ -27,7 +27,8 @@ text {
   	font-size: 13px;
 }
 .bar:hover {
-    fill: #848F95;
+    stroke: black;
+    stroke-width: 1px;
 }
 .bar {
     /* fill: #72A5B8; */
