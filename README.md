@@ -44,7 +44,7 @@ Volg deze stappen om het project draaiend te krijgen
 2. Clone de repo
 
 ```
-git clone https://github.com/Wiebsonice/frontend-applications.git
+git clone https://github.com/Wiebsonice/functional-programming.git
 ```
 
 3. Instaleer de benodigde node medules
@@ -53,50 +53,46 @@ git clone https://github.com/Wiebsonice/frontend-applications.git
 npm install
 ```
 
-4. Start de node server
+4. Start de development server
 
 ```
-npm run serve
+npm run dev
 ```
 
-5. Navigate to the localhost via your browser
+4. Build het project (voor publishing)
 
 ```
-  - Local:   http://localhost:8080/
-  - Network: http://<IP ADRES HERE>:8080/
+npm run build
 ```
 
-Als alles goed is gegeaan zul je in de terminal het volgende bericht te zien krijgen:
+5. Navigate to the localhost of your codeeditor
 
 ```
- DONE  Compiled successfully in 167ms                                                                                                  10:03:23 AM
-
-
-  App running at:
-  - Local:   http://localhost:8080/
-  - Network: http://172.16.1.175:8080/
-
+// Default in atom
+  - Local:   http://localhost:3000/
+  - Network: http://<IP ADRES HERE>:3000/
 ```
-En ten slotte zul je gegroet worden door de homepagina van het project
 
+6. Select the right folder
+```
+    public/index.html
+```
 
 ## Deployment
 Soon meer uitleg
 
 ## Gebouwd met
 
-* [VueJs](https://vuejs.org/) - Js Framework gebruikt
 * [Node](https://nodejs.org/en/) - Dependency Management
-* [Webpack](https://webpack.js.org/) - Pagebuilder
+* [Rollup](https://rollupjs.org/) - Pagebuilder
 * [NMVW API](https://collectie.wereldculturen.nl/) - API voor data
 * [SparQl](https://www.w3.org/TR/rdf-sparql-query/) - SpaQl taal van de database
   
 ## Features
 
-* [Routing](https://github.com/Wiebsonice/frontend-applications/wiki/Documentatie-%7C-Routing)
-* [Data uit API](https://github.com/Wiebsonice/frontend-applications/wiki/Documentatie-%7C-Data-ophalen-en-gebruiken)
 * [Data manipulatie](https://github.com/Wiebsonice/frontend-applications/wiki/Documentatie-%7C-Data-bewerken-clientside)
 * [SparQl Query](https://github.com/Wiebsonice/frontend-applications/wiki/Documentatie-%7C-SparQl-Query)
+* [D3 chart]()
 
   
 ## API Data
@@ -105,27 +101,39 @@ De Data die ik gebruik in de app komt van het endpoint van de NMVW collectie. Ho
 
 ```
 0: {
-   cho: {
-      type: "uri",
-      value: "https://hdl.handle.net/20.500.11840/1098099"
-   },
-   extent: {
-      type: "literal",
-      value: "3.7"
-   },
-   img: {
-      type: "literal",
-      value: "https://collectie.wereldculturen.nl/cc/imageproxy.ashx?server=localhost&port=17581&filename=images/Images/WM//050038.jpg"
-   },
-   title: {
-      type: "literal",
-      value: "Godenbeeld",
-      xml:lang: "ned"
-   },
-   type: {
-      type: "literal",
-      value: "Boeddhabeeld"
-   }
+        "type": {
+          "type": "literal",
+          "value": "Beeld"
+        },
+        "title": {
+          "type": "literal",
+          "xml:lang": "ned",
+          "value": "Gipsen beeld van een indiaan, een Caboclo"
+        },
+        "mediumLabel": {
+          "type": "literal",
+          "value": "ijzer"
+        },
+        "img": {
+          "type": "literal",
+          "value": "http://collectie.wereldculturen.nl/cc/imageproxy.ashx?server=localhost&port=17581&filename=images/Images/TM//tm-4356-72.jpg"
+        },
+        "landLabel": {
+          "type": "literal",
+          "value": "Brazil"
+        },
+        "date": {
+          "type": "literal",
+          "value": "voor 1977"
+        },
+        "lat": {
+          "type": "literal",
+          "value": "-8.05389"
+        },
+        "long": {
+          "type": "literal",
+          "value": "-34.88111"
+        }
 },
 1: {...},
 2: {...},
@@ -133,17 +141,17 @@ De Data die ik gebruik in de app komt van het endpoint van de NMVW collectie. Ho
 
 ```
 
-De data die je hierboven ziet is binnengehaald door mij en is informatie over boeddha beelden. De `Cho` is het object nummer, de `Extent` geeft de afmeetingen, de `img` bevat de link naar de image, de `title` spreekt voor zichzelf, en ten slotte `type` geeft het type voorbeeld weer.
+De data die je hierboven ziet is binnengehaald door mij en is informatie over alle beelden uit de collectie. De `Type` is het type object, de `Title` geeft de titel, de `mediumLabel` bevat het gebruikte materiaal, de `img` bevat de link naar de image, de `landLabel` verteld uit welk land het object komt, ik heb ook de `date` en ten slotte  de `lat` en `long` de lat en long waarde door..
 
 ### DataBewerking
-Een aantal waarden die ik binnen krijg heb ik clientside opgelost. Zo heb ik de verschillende formateringen van de lengtes van de beelden gelijk getrokken, Heb ik van de image links de `http://` links omgezet naar `https://`. En ten slotte heb ik de objecten gesorteert op de lengte. Dit valt allemaal te lezen op [Data bewerken clientside](https://github.com/Wiebsonice/frontend-applications/wiki/Documentatie-%7C-Data-bewerken-clientside)
+Een aantal waarden die ik binnen krijg heb ik clientside opgelost. Zo heb ik de verschillende formateringen van de jaren en materialen van de beelden gelijk getrokken. Dit valt allemaal te lezen op [Data Opschonen]()
   
 ## Author
 
 * **Wiebe Kremer** - *Initial work* - [Wiebsonice](https://github.com/Wiebsonice)
   
 ## Acknowledgements
-
+* Opzetten van rollup [Kris Kuiper]()
 
 ## License
 
