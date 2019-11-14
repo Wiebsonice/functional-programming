@@ -181,9 +181,8 @@ main();
 
 function makeD3Chart(cleanArr) {
     // Example from https://bl.ocks.org/caravinden/eb0e5a2b38c8815919290fa838c6b63b
-    // var data = [{"salesperson":"Bob","sales":33},{"salesperson":"Robin","sales":12},{"salesperson":"Anne","sales":41},{"salesperson":"Mark","sales":16},{"salesperson":"Joe","sales":59},{"salesperson":"Eve","sales":38},{"salesperson":"Karen","sales":21},{"salesperson":"Kirsty","sales":25},{"salesperson":"Chris","sales":30},{"salesperson":"Lisa","sales":47},{"salesperson":"Tom","sales":5},{"salesperson":"Stacy","sales":20},{"salesperson":"Charles","sales":13},{"salesperson":"Mary","sales":29}];
 
-    // own Data
+    // Own Data
     var data = cleanArr;
     data.sort(function(a, b) {
         return d3.ascending(a.count, b.count)
@@ -193,7 +192,7 @@ function makeD3Chart(cleanArr) {
 
     // set the dimensions and margins of the graph
     var margin = {top: 20, right: 20, bottom: 30, left: 60},
-        width = 960 - margin.left - margin.right,
+        width = 800 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
 
     // set the ranges
@@ -224,7 +223,7 @@ function makeD3Chart(cleanArr) {
       });
 
       // Scale the range of the data in the domains
-      x.domain([0, d3.max(data, function(d){ return d.count; })])
+      x.domain([0, d3.max(data, function(d){ return d.count + 250; })])
       y.domain(data.map(function(d) { return d.material; }));
       //y.domain([0, d3.max(data, function(d) { return d.count; })]);
 
