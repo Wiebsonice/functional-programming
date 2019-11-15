@@ -28,6 +28,15 @@ Een interactieve horse race die laat zien hoeveel beelden van een bepaalde beeld
   
 En Racen maar!
 
+  
+# Concept 3 it is.
+Waarom is concept 3 het meest interessant in mijn ogen? Omdat het een boeiende annimatie kan worden die niet akkeen leuk is maar ook leerzaam kan zijn voor mensen. Zo kan gezien worden van welk materiaal de meeste beelden gemaakt worden. Bijvoorbeeld is te zien dat er bij beelden uit 1000 of eerder amper bronze gebruikt werd om het beeld te maken. Maar toen mensen het werken met metalen onder de knie kregen, zag je dat die techniek erg toenam.
+
+## Interactie
+Als interactie ga ik een horse race maken, we beginnen bij het jaar 0, en lopen zo op naar nu. En elk jaar dat er beelden bijkomen telt de teller van dat materiaal op. Ik zou ook een kaartje kunnen maken waar de gebruiker op kan klikken, zodat hij de technieken en beelden per wereldeel kan zien. om zo te zien of de beelden daadwerkelijk van materiaal veranderen of dat het per werelddeel anders is.
+  
+Zie hier de chart die ik statisch gemaakt heb:
+![chart](https://github.com/Wiebsonice/functional-programming/raw/master/wiki-assets/chart.png)
 
 
 ## Getting Started
